@@ -27,7 +27,7 @@ curl http://localhost:8080/api/v1/person \
     -d '{
     "firstName": "Axell",
     "lastName": "Brendow",
-    "cpf": "11111111111",
+    "cpf": "23108762087",
     "phones": [
         {
             "type": "MOBILE",
