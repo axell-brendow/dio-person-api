@@ -45,3 +45,9 @@ curl http://localhost:8080/api/v1/person \
 ```sh
 curl http://localhost:8080/api/v1/person | json_pp
 ```
+
+### Get person by id
+
+```sh
+curl http://localhost:8080/api/v1/person/1 | json_pp
+```

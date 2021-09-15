@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.axellbrendow.diopersonapi.dto.request.PersonDTO;
 import br.com.axellbrendow.diopersonapi.dto.response.MessageResponseDTO;
+import br.com.axellbrendow.diopersonapi.exception.NotFoundException;
 import br.com.axellbrendow.diopersonapi.mapper.PersonMapper;
 import br.com.axellbrendow.diopersonapi.repository.PersonRepository;
 
@@ -34,5 +35,10 @@ public class PersonService {
             .stream()
             .map(mapper::toDto)
             .collect(Collectors.toList());
+    }
+
+    public PersonDTO findById(Long id) {
+        var entity = repository.findById(id).orElseThrow(() -> new NotFoundException(id));
+        return mapper.toDto(entity);
     }
 }
