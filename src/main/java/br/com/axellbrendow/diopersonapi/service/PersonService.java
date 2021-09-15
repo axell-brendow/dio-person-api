@@ -1,5 +1,8 @@
 package br.com.axellbrendow.diopersonapi.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,5 +27,12 @@ public class PersonService {
             .builder()
             .message("Created person with ID " + savedPerson.getId())
             .build();
+    }
+
+    public List<PersonDTO> findAll() {
+        return repository.findAll()
+            .stream()
+            .map(mapper::toDto)
+            .collect(Collectors.toList());
     }
 }

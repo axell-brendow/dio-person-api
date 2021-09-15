@@ -13,12 +13,14 @@ java -jar target/dio-person-api-0.0.1-SNAPSHOT.jar
 
 ## Testing the project
 
-First, check if service is up:
+### First, check if service is up:
 
 ```sh
 curl http://localhost:8080/actuator/health
 # Output should be {"status":"UP"}
 ```
+
+### Insert a person
 
 ```sh
 curl http://localhost:8080/api/v1/person \
@@ -28,6 +30,7 @@ curl http://localhost:8080/api/v1/person \
     "firstName": "Axell",
     "lastName": "Brendow",
     "cpf": "23108762087",
+    "birthDate": "15-09-2021",
     "phones": [
         {
             "type": "MOBILE",
@@ -35,4 +38,10 @@ curl http://localhost:8080/api/v1/person \
         }
     ]
 }' | json_pp
+```
+
+### Get all persons
+
+```sh
+curl http://localhost:8080/api/v1/person | json_pp
 ```
