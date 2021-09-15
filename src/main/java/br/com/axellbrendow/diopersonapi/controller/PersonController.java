@@ -10,25 +10,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.axellbrendow.diopersonapi.dto.response.MessageResponseDTO;
 import br.com.axellbrendow.diopersonapi.entity.Person;
-import br.com.axellbrendow.diopersonapi.repository.PersonRepository;
+import br.com.axellbrendow.diopersonapi.service.PersonService;
 
 @RestController
 @RequestMapping("/api/v1/person")
 public class PersonController {
-    private PersonRepository repository;
+    private PersonService service;
 
     @Autowired
-    public PersonController(PersonRepository repository) {
-        this.repository = repository;
+    public PersonController(PersonService service) {
+        this.service = service;
     }
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public MessageResponseDTO create(@RequestBody Person person) {
-        var savedPerson = repository.save(person);
-        return MessageResponseDTO
-            .builder()
-            .message("Created person with ID " + savedPerson.getId())
-            .build();
+        return service.create(person);
     }
 }
