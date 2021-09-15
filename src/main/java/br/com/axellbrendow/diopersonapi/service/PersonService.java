@@ -41,4 +41,9 @@ public class PersonService {
         var entity = repository.findById(id).orElseThrow(() -> new NotFoundException(id));
         return mapper.toDto(entity);
     }
+
+    public void deleteById(Long id) {
+        repository.findById(id).orElseThrow(() -> new NotFoundException(id));
+        repository.deleteById(id);
+    }
 }

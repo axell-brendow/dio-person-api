@@ -51,3 +51,9 @@ curl http://localhost:8080/api/v1/person | json_pp
 ```sh
 curl http://localhost:8080/api/v1/person/1 | json_pp
 ```
+
+### Delete person by id
+
+```sh
+curl http://localhost:8080/api/v1/person/1 -X DELETE
+```
