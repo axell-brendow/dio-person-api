@@ -57,3 +57,23 @@ curl http://localhost:8080/api/v1/person/1 | json_pp
 ```sh
 curl http://localhost:8080/api/v1/person/1 -X DELETE
 ```
+
+### Update person by id
+
+```sh
+curl http://localhost:8080/api/v1/person/1 \
+    -X PUT \
+    -H "Content-Type: application/json" \
+    -d '{
+    "firstName": "Axell_updated",
+    "lastName": "Brendow_updated",
+    "cpf": "23108762087",
+    "birthDate": "15-09-2021",
+    "phones": [
+        {
+            "type": "MOBILE",
+            "number": "(11)999999999"
+        }
+    ]
+}' | json_pp
+```

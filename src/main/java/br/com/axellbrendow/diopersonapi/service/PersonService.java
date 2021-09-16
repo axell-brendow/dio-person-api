@@ -3,6 +3,8 @@ package br.com.axellbrendow.diopersonapi.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,5 +47,19 @@ public class PersonService {
     public void deleteById(Long id) {
         repository.findById(id).orElseThrow(() -> new NotFoundException(id));
         repository.deleteById(id);
+    }
+
+    public MessageResponseDTO updateById(Long id, @Valid PersonDTO personDTO) {
+        repository.findById(id).orElseThrow(() -> new NotFoundException(id));
+
+        var person = mapper.toModel(personDTO);
+        person.setId(id);
+
+        repository.save(person);
+
+        return MessageResponseDTO
+            .builder()
+            .message("Updated person with ID " + id)
+            .build();
     }
 }
