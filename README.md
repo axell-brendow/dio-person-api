@@ -13,9 +13,19 @@ java -jar target/dio-person-api-0.0.1-SNAPSHOT.jar
 
 ## Testing the project
 
-### First, check if service is up:
+## Automated tests:
 
 ```sh
+mvn test
+```
+
+## Manual tests:
+
+### First, run the application and check if service is up:
+
+```sh
+mvn install
+java -jar target/dio-person-api-0.0.1-SNAPSHOT.jar
 curl http://localhost:8080/actuator/health
 # Output should be {"status":"UP"}
 ```
