@@ -4,11 +4,10 @@
 
 If you are using an IDE, use it to run the project because you will get Live Reload working.
 
-If you wanna use the terminal, compile and run the jar with:
+If you wanna use your terminal, just run:
 
 ```sh
-mvn install
-java -jar target/dio-person-api-0.0.1-SNAPSHOT.jar
+./mvnw spring-boot:run
 ```
 
 ## Testing the project
@@ -16,7 +15,7 @@ java -jar target/dio-person-api-0.0.1-SNAPSHOT.jar
 ## Automated tests:
 
 ```sh
-mvn test
+./mvnw test
 ```
 
 ## Manual tests:
@@ -24,8 +23,9 @@ mvn test
 ### First, run the application and check if service is up:
 
 ```sh
-mvn install
-java -jar target/dio-person-api-0.0.1-SNAPSHOT.jar
+./mvnw spring-boot:run
+
+# In another terminal, run:
 curl http://localhost:8080/actuator/health
 # Output should be {"status":"UP"}
 ```
